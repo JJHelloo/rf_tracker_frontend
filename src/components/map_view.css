@@ -1,0 +1,67 @@
+/* Default styles for large screens */
+.left-panel {
+  overflow-y: auto;
+  height: 100vh;
+  width: 30%;
+}
+
+.right-panel {
+  width: 70%;
+}
+
+/* Mobile view */
+@media only screen and (max-width: 768px) {
+  .left-panel, .right-panel {
+    width: 100%;
+  }
+}
+
+
+.map-container {
+  background-color: #F2F2F2;
+  display: flex;
+}
+
+.left-panel {
+  flex: 1;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.right-panel {
+  flex: 2;
+}
+
+#leaflet-map {
+  height: 100vh;
+}
+
+/* Enhanced search box and button styles */
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830); /* Gradient from #0ebbfe to #00c9c3 to #c1d830 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(to right, #0ea2d4, #00a2b1, #aeb820); /* Darker gradient for hover */
+}
+
+.search-results > div {
+  margin-bottom: 5px; /* Adds spacing between each device */
+  border-bottom: 1px solid #ccc; /* Adds a line under each device */
+  padding-bottom: 5px; /* Adds some padding at the bottom for better visual */
+  padding-top: 35px;
+}
+
