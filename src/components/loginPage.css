@@ -1,0 +1,61 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #3E4446;
+}
+
+.login-box {
+  width: 320px;
+  background-color: #181A1B;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h1 {
+  background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830);
+  -webkit-background-clip: text; /* Apply the gradient to the text */
+  color: transparent; /* Make the text transparent */
+  margin: 0 0 20px 0;
+  text-align: center; /* Center the text horizontally within .login-box */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input {
+  background-color: #181A1B;
+  color: white;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.login-button {
+  margin: 20px 0 0 0;
+  padding: 12px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px; /* Increase the font size */
+}
+.login-button:hover {
+  /* Hover effect for the button background color */
+  background: linear-gradient(to right, #0ea2d4, #00a2b1, #aeb820);
+}
+.login-input[type="text"],
+.login-input[type="password"] {
+  background-color: #3E4446;
+  width: 100%;
+  max-width: 100%;
+}

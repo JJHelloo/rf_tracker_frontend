@@ -78,7 +78,7 @@ const MapView = () => {
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
-        <button onClick={handleSearch} className="gradient-button">Search</button>
+       <button onClick={handleSearch} className="map-button">Search</button>
         <h3 style={{ textAlign: 'left', marginTop: '40px' }}> MAC Address:</h3>
         <div className="search-results">
           {filteredDevices.map(device => (  // Changed to filteredDevices
@@ -89,10 +89,10 @@ const MapView = () => {
               {selectedDevice && selectedDevice.DeviceID === device.DeviceID && (
                 <div className="device-details">
                   <h4>Selected Device Details</h4>
-                  <p>MAC Address: <span style={{color: 'red'}}>{selectedDevice.MACAddress}</span></p>
-                  <p>Latitude: <span style={{color: 'red'}}>{selectedDevice.Latitude}</span></p>
-                  <p>Longitude: <span style={{color: 'red'}}>{selectedDevice.Longitude}</span></p>
-                  <p>Last User: <span style={{color: 'red'}}>{selectedDevice.Username}</span></p>
+                  <p>MAC Address: <span style={{color: '#FF6666'}}>{selectedDevice.MACAddress}</span></p>
+                  <p>Latitude: <span style={{color: '#FF6666'}}>{selectedDevice.Latitude}</span></p>
+                  <p>Longitude: <span style={{color: '#FF6666'}}>{selectedDevice.Longitude}</span></p>
+                  <p>Last User: <span style={{color: '#FF6666'}}>{selectedDevice.Username}</span></p>
                 </div>
               )}
             </div>

@@ -1,0 +1,82 @@
+/* General styling for the entire dashboard */
+.dashboard-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh;
+    background-color: #3E4446;
+    margin: 0;
+    padding: 0;
+  }
+  /* Card Styling */
+  .dashboard-card {
+    width: 320px;
+    background-color: #181A1B;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .dashboard-card h1{
+    background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830);
+    -webkit-background-clip: text; /* Apply the gradient to the text */
+    color: transparent; /* Make the text transparent */
+    margin: 0 0 20px 0;
+    text-align: center; /* Center the text horizontally within .login-box */
+  }
+  
+  /* Header Styling */
+  .dashboard-header {
+    background-color: #1b4269;
+    color: white;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  /* Title Styling */
+  .dashboard-title {
+    margin: 0; /* Remove any default margin to center the text */
+  }
+  
+  /* Card Content Styling */
+  .dashboard-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center vertically */
+  }
+  
+  /* Card Button Styling */
+  .dashboard-card-button {
+    margin: 15px 0;
+  }
+  
+  /* Button Styling */
+  
+  .UserManagementButton {
+    background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830);
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .GoToMapButton {
+    background: linear-gradient(to right, #0ea2d4, #00a2b1, #aeb820);
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  /* Hover Effect for Buttons */
+  
+  .UserManagementButton:hover {
+    background: linear-gradient(to right, #0ea2d4, #00a2b1, #aeb820);
+  }
+  .GoToMapButton:hover{ 
+    background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830);
+  }
+  
