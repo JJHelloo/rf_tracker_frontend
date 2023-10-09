@@ -8,15 +8,17 @@ const MapView = () => {
   const circleRef = useRef(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [devices, setDevices] = useState([]);
-  const [filteredDevices, setFilteredDevices] = useState([]); 
-  const [selectedDevice, setSelectedDevice] = useState(null);
+  const [expandedSite, setExpandedSite] = useState(null);  // New state to keep track of expanded site
+  const [selectedDevice, setSelectedDevice] = useState(null);  // New state for selected device
+  const [originalDevices, setOriginalDevices] = useState([]);
+
 
   useEffect(() => {
     fetch('http://localhost:3001/devices/api/devices')
       .then(res => res.json())
       .then(data => {
-        setDevices(data);
-        setFilteredDevices(data);  // Initialize filteredDevices
+        setOriginalDevices(data);  // Store the original list
+        setDevices(data);          // Update the current list
       })
       .catch(error => console.error('Error fetching devices:', error));
 
@@ -44,20 +46,21 @@ const MapView = () => {
 
   const handleSearch = () => {
     if (searchTerm.length === 4) {
-      const filtered = devices.filter(device =>
+      const filtered = originalDevices.filter(device =>
         device.MACAddress.slice(-4) === searchTerm
       );
-      setFilteredDevices(filtered);
+      setDevices(filtered);  // Update the displayed list based on the filter
     } else {
-      setFilteredDevices(devices);
+      setDevices(originalDevices);  // Reset to the original list
     }
-  }
+  };
 
   const handleDeviceClick = async (device) => {
     const deviceId = device.DeviceID;
     const response = await fetch(`http://localhost:3001/devices/api/device/location/${deviceId}`);
     const deviceDetails = await response.json();
-    setSelectedDevice(deviceDetails);
+    setSelectedDevice(deviceDetails);  // Setting the selected device
+
 
     const newLatLng = [deviceDetails.Latitude, deviceDetails.Longitude];
     if (circleRef.current) {
@@ -66,7 +69,13 @@ const MapView = () => {
     if (mapRef.current) {
       mapRef.current.setView(newLatLng, 13);
     }
-  }
+  };
+
+  // Group devices by their site
+  const groupedBySite = devices.reduce((acc, device) => {
+    (acc[device.SiteID] = acc[device.SiteID] || {siteName: device.SiteName, devices: []}).devices.push(device);
+    return acc;
+  }, {});
 
   return (
     <div className="map-container">
@@ -77,23 +86,36 @@ const MapView = () => {
           placeholder="Search... (last 4 of the mac address)" 
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-        />
+        /> 
         <br></br>
-       <button onClick={handleSearch} className="map-button">Search</button>
-        <h3 style={{ textAlign: 'left', marginTop: '40px' }}> MAC Address:</h3>
-        <div className="search-results">
-          {filteredDevices.map(device => (  // Changed to filteredDevices
-            <div key={device.DeviceID}>
-              <div onClick={() => handleDeviceClick(device)} style={{ fontWeight: 'bold' }}>
-               {device.MACAddress}
+        <button onClick={handleSearch} className="map-button">Search</button>
+        <button className="add-rf-button">Add RF</button>  {/* Add RF button added here */}
+        <h3 style={{ textAlign: 'left', marginTop: '40px' }}>Locations:</h3>
+        <div className="location-list">
+          {Object.keys(groupedBySite).map(siteID => (
+            <div key={siteID}>
+              <div onClick={() => setExpandedSite(expandedSite === siteID ? null : siteID)}>
+                {groupedBySite[siteID].siteName}
               </div>
-              {selectedDevice && selectedDevice.DeviceID === device.DeviceID && (
-                <div className="device-details">
-                  <h4>Selected Device Details</h4>
-                  <p>MAC Address: <span style={{color: '#FF6666'}}>{selectedDevice.MACAddress}</span></p>
-                  <p>Latitude: <span style={{color: '#FF6666'}}>{selectedDevice.Latitude}</span></p>
-                  <p>Longitude: <span style={{color: '#FF6666'}}>{selectedDevice.Longitude}</span></p>
-                  <p>Last User: <span style={{color: '#FF6666'}}>{selectedDevice.Username}</span></p>
+              {expandedSite === siteID && (
+                <div className="device-list">
+                  {groupedBySite[siteID].devices.map(device => (
+                    <div key={device.DeviceID}>
+                      <div key={device.DeviceID} onClick={() => handleDeviceClick(device)} 
+                          className={selectedDevice && selectedDevice.DeviceID === device.DeviceID ? "selected-mac" : ""}>
+                        {device.MACAddress}
+                      </div>
+                      {selectedDevice && selectedDevice.DeviceID === device.DeviceID && (
+                        <div className="device-details">
+                          <h4>Selected Device Details</h4>
+                          <p>MAC Address: <span style={{color: '#FF6666'}}>{selectedDevice.MACAddress}</span></p>
+                          <p>Latitude: <span style={{color: '#FF6666'}}>{selectedDevice.Latitude}</span></p>
+                          <p>Longitude: <span style={{color: '#FF6666'}}>{selectedDevice.Longitude}</span></p>
+                          <p>Last User: <span style={{color: '#FF6666'}}>{selectedDevice.Username}</span></p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -105,6 +127,6 @@ const MapView = () => {
       </div>
     </div>
   );
-}
+};   
 
 export default MapView;

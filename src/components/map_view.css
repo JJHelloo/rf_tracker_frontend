@@ -1,25 +1,31 @@
 /* Default styles for large screens */
 .left-panel {
+  padding-left: 5px;
   overflow-y: auto;
   height: 100vh;
   width: 30%;
+  background-color: #3E4446;
+  color: #F0F0F0;
+  border-right: 1px solid #ccc;
 }
-.left-panel h1{
+
+.left-panel h1, .left-panel h3 {
   background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830);
-  -webkit-background-clip: text; /* Apply the gradient to the text */
-  color: transparent; /* Make the text transparent */
+  -webkit-background-clip: text; 
+  color: transparent; 
 }
-.left-panel h3 {
+
+.search-results, .location-list, .device-list {
   color: #F0F0F0;
 }
-.search-results {
-  color: #F0F0F0;
-}
+
 .right-panel {
   width: 70%;
+  height: 100vh;
 }
-.device-details h4{
-color: #FFCCCC;
+
+.device-details h4 {
+  color: #FFCCCC;
 }
 
 /* Mobile view */
@@ -29,22 +35,8 @@ color: #FFCCCC;
   }
 }
 
-
 .map-container {
-  background-color: #3E4446;
   display: flex;
-}
-
-.left-panel {
-  flex: 1;
-  padding: 20px;
-  border-right: 1px solid #ccc;
-  margin: 0 0 20px 0;
-  text-align: center; /* Center the text horizontally within .login-box */
-}
-
-.right-panel {
-  flex: 2;
 }
 
 #leaflet-map {
@@ -75,14 +67,44 @@ color: #FFCCCC;
   background: linear-gradient(to right, #0ea2d4, #00a2b1, #aeb820);
 }
 
-.search-results > div {
-  margin-bottom: 5px; /* Adds spacing between each device */
-  border-bottom: 1px solid #ccc; /* Adds a line under each device */
-  padding-bottom: 5px; /* Adds some padding at the bottom for better visual */
-  padding-top: 35px;
+.search-results > div, .location-list > div {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  cursor: pointer;
 }
+
+.device-list > div {
+  padding-top: 15px;
+  margin-bottom: 10px;  /* Adds spacing between each MAC address */
+  border-bottom: 1px solid #181A1B;  /* Adds a line under each MAC address */
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
 .leaflet-bar a {
   background-color: #3E4446;
   color: white;
 }
+.selected-mac {
+  color: #FFCC00;
+  font-weight: bold;
+}
+.add-rf-button {
+  padding: 10px 20px;
+  background: #0ebbfe;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 200px;
+}
+
+.add-rf-button:hover {
+  background: #0ea2d4;
+}
+
 

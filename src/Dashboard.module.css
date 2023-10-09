@@ -76,7 +76,36 @@
   .UserManagementButton:hover {
     background: linear-gradient(to right, #0ea2d4, #00a2b1, #aeb820);
   }
+  .UserManagementButton:disabled {
+    cursor: not-allowed;
+  }
   .GoToMapButton:hover{ 
     background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830);
   }
+  .dashboard-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .global-logout-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(to right, #d40e3f, #d40e2a, #d45e0e); /* Gradient background */
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 999; /* To ensure it stays above other elements */
+  }
+  
+  .global-logout-button:hover {
+    background: linear-gradient(to right, #b00c35, #b00c22, #b0510c); /* Slightly darker on hover */
+  }
+  
+  
   

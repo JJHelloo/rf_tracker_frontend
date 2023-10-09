@@ -8,6 +8,7 @@ const AddAppUser = ({ onUserAdded }) => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState(null);
   const [messageColor, setMessageColor] = useState('black'); // Default message color
+  const token = localStorage.getItem('jwtToken');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +25,8 @@ const AddAppUser = ({ onUserAdded }) => {
     const response = await fetch('http://localhost:3001/users/api/addAppUser', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(data)
     });
