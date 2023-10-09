@@ -1,0 +1,29 @@
+/* User Management Container */
+.user-management-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #3E4446;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Button Styles */
+  .user-management-button {
+    background: linear-gradient(to right, #0ebbfe, #00c9c3, #c1d830);
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Button Hover Effect */
+  .user-management-button:hover {
+    background: linear-gradient(to right, #0ea2d4, #00a2b1, #aeb820);
+  }
+  

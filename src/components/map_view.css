@@ -52,7 +52,7 @@ color: #FFCCCC;
 }
 
 /* Enhanced search box and button styles */
-input[type="text"] {
+.map-container input[type="text"] {
   width: 80%;
   padding: 10px;
   margin: 10px 0;
@@ -80,5 +80,9 @@ input[type="text"] {
   border-bottom: 1px solid #ccc; /* Adds a line under each device */
   padding-bottom: 5px; /* Adds some padding at the bottom for better visual */
   padding-top: 35px;
+}
+.leaflet-bar a {
+  background-color: #3E4446;
+  color: white;
 }
 
