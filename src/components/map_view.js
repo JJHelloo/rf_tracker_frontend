@@ -8,7 +8,7 @@ const MapView = () => {
   const circleRef = useRef(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [devices, setDevices] = useState([]);
-  const [filteredDevices, setFilteredDevices] = useState([]);  // New state
+  const [filteredDevices, setFilteredDevices] = useState([]); 
   const [selectedDevice, setSelectedDevice] = useState(null);
 
   useEffect(() => {
@@ -78,6 +78,7 @@ const MapView = () => {
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
+        <br></br>
        <button onClick={handleSearch} className="map-button">Search</button>
         <h3 style={{ textAlign: 'left', marginTop: '40px' }}> MAC Address:</h3>
         <div className="search-results">

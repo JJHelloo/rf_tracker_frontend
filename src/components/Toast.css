@@ -1,0 +1,14 @@
+.toast {
+    /* common styles for all toasts */
+  }
+  
+  .toast-success {
+    background-color: green;
+    /* other styles for successful toasts */
+  }
+  
+  .toast-error {
+    background-color: red;
+    /* other styles for error toasts */
+  }
+  
