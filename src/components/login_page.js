@@ -26,7 +26,7 @@ const LoginPage = ({ setLoggedIn }) => {
     .then(response => response.json())
     .then(data => {
       if (data.authenticated) {
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('jwtToken', data.token);
         setLoggedIn(true);
         navigate('/');  // Navigate to the dashboard
       } else {
